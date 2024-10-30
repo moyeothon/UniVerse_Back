@@ -33,10 +33,13 @@ public class Member extends BaseEntity {
   @Column(nullable = false, length = 30, unique = true)
   private String username; //아이디
 
+  @Column(nullable = false)
   private String password; //비밀번호
 
+  @Column(nullable = false, length = 30, unique = true)
   private String email; //이메일
 
+  @Column(nullable = false)
   private String nickname; //닉네임
 
   @Enumerated(EnumType.STRING)
