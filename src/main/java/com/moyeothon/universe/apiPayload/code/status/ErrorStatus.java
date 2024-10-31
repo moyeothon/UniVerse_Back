@@ -19,7 +19,8 @@ public enum ErrorStatus implements BaseErrorCode {
     // 멤버 관려 에러
     MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "MEMBER4001", "존재하지 않는 사용자 입니다."),
     MEMBER_INVALID_PASSWORD(HttpStatus.UNAUTHORIZED, "MEMBER4002", "비밀번호가 옳지 않습니다."),
-    MEMBER_ALREADY_EXIST(HttpStatus.CONFLICT, "MEMBER4003", "이미 존재하는 사용자입니다."),
+    MEMBER_USERNAME_ALREADY_EXIST(HttpStatus.CONFLICT, "MEMBER4003", "이미 존재하는 사용자입니다."),
+    MEMBER_EMAIL_ALREADY_EXIST(HttpStatus.CONFLICT, "MEMBER4003", "이미 사용중인 이메일입니다."),
     MEMBER_PASSWORD_NOT_MATCHED(HttpStatus.NOT_ACCEPTABLE, "MEMBER4002", "비밀번호가 옳지 않습니다.");
 
     private final HttpStatus httpStatus;

@@ -24,6 +24,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
+import org.springframework.web.cors.CorsUtils;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -46,17 +47,21 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    http.httpBasic(HttpBasicConfigurer::disable)
+
+    http
+        .httpBasic(HttpBasicConfigurer::disable)
         .formLogin(FormLoginConfigurer::disable)
         .csrf(CsrfConfigurer::disable)
-        .cors(CorsConfigurer::disable)
-        .sessionManagement(configurer -> configurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .sessionManagement(
+            configurer -> configurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests((authorize) -> authorize
+            .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
             .requestMatchers(AUTH_WHITELIST).permitAll()
             .anyRequest().authenticated()
         )
         .addFilterAfter(jsonUsernamePasswordLoginFilter(), LogoutFilter.class)
-        .addFilterBefore(jwtAuthenticationProcessingFilter(), JsonUsernamePasswordAuthenticationFilter.class)
+        .addFilterBefore(jwtAuthenticationProcessingFilter(),
+            JsonUsernamePasswordAuthenticationFilter.class)
         .httpBasic(withDefaults());
     return http.build();
   }
