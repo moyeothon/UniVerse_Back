@@ -1,5 +1,7 @@
 package com.moyeothon.universe.service;
 
+import com.moyeothon.universe.apiPayload.code.status.ErrorStatus;
+import com.moyeothon.universe.apiPayload.exception.handler.MemberHandler;
 import com.moyeothon.universe.domain.Member;
 import com.moyeothon.universe.domain.dto.MemberRequestDto;
 import com.moyeothon.universe.domain.emun.MemberStatus;
@@ -17,13 +19,24 @@ public class MemberService {
   private final PasswordEncoder passwordEncoder;
 
   public Member signUp(MemberRequestDto.SignUp signUpDto) {
+    memberRepository.findByUsername(signUpDto.getUsername()).ifPresent(
+        member -> {
+          throw new MemberHandler(ErrorStatus.MEMBER_ALREADY_EXIST);
+        }
+    );
+    memberRepository.findByEmail(signUpDto.getEmail()).ifPresent(
+        member -> {
+          throw new MemberHandler(ErrorStatus.MEMBER_ALREADY_EXIST);
+        }
+    );
+
     signUpDto.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
     return memberRepository.save(signUpDto.toEntity());
   }
 
   public void signOut() {
     Member member = memberRepository.findByUsername(SecurityUtil.getLoginUsername())
-        .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원입니다."));
+        .orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
     member.setStatus(MemberStatus.DELETED);
   }
 }

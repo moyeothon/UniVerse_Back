@@ -15,6 +15,7 @@ public class MemberResponseDto {
   @Data
   @Builder
   public static class SignUpDto {
+    private Long id;
     private String username;
     private String email;
     private String nickname;
