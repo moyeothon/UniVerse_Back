@@ -4,6 +4,7 @@ import com.moyeothon.universe.domain.Member;
 import com.moyeothon.universe.domain.dto.MemberRequestDto;
 import com.moyeothon.universe.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,9 +12,11 @@ import org.springframework.stereotype.Service;
 public class MemberService {
 
   private final MemberRepository memberRepository;
+  private final PasswordEncoder passwordEncoder;
 
-  public void signUp(MemberRequestDto.SignUp signUpDto) {
-    memberRepository.save(signUpDto.toEntity());
+  public Member signUp(MemberRequestDto.SignUp signUpDto) {
+    signUpDto.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
+    return memberRepository.save(signUpDto.toEntity());
   }
 
 }
