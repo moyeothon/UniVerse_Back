@@ -29,16 +29,14 @@ public class Movie extends BaseEntity {
   @Column(nullable = false, length = 30, unique = true)
   private String title; //제목
 
-  private String psoterUrl; //포스터 URL
+  private String posterUrl; //포스터 URL
 
   @Column(nullable = false)
   private String subtitle; //부제
 
   private String releaseDate; //개봉일
 
-  @Column(nullable = false, length = 30, unique = true)
   private String actors; //배우
 
-  @Column(nullable = false)
   private String directors; //감독
 }
