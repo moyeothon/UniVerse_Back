@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,8 +34,9 @@ public class MemberController {
         .build());
   }
 
-  @GetMapping("/test")
-  public ApiResponse<?> test() {
-    return ApiResponse.of(SuccessStatus.MEMBER_FOUND, "test");
+  @DeleteMapping
+  public ApiResponse<?> signOut() {
+    memberService.signOut();
+    return ApiResponse.of(SuccessStatus.MEMBER_DELETE, "SignOut Success");
   }
 }

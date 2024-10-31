@@ -3,6 +3,7 @@ package com.moyeothon.universe.domain;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 import com.moyeothon.universe.domain.common.BaseEntity;
+import com.moyeothon.universe.domain.emun.MemberStatus;
 import com.moyeothon.universe.domain.emun.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Table(name = "MEMBER")
@@ -44,12 +46,17 @@ public class Member extends BaseEntity {
   private String nickname; //닉네임
 
   @Enumerated(EnumType.STRING)
+  @Setter
+  private MemberStatus status;
+
+  @Enumerated(EnumType.STRING)
   @Column(nullable = false, length = 30)
   private Role role; //권한 -> USER, ADMIN
 
   private String refreshToken; //리프레시 토큰
 
   //== 정보 수정 ==//
+
   public void updatePassword(PasswordEncoder passwordEncoder, String password){
     this.password = passwordEncoder.encode(password);
   }
