@@ -30,7 +30,6 @@ public class Member extends BaseEntity {
 
   @Id
   @GeneratedValue(strategy = IDENTITY)
-  @Column(name = "member_id")
   private Long id; //primary Key
 
   @Column(nullable = false, length = 30, unique = true)

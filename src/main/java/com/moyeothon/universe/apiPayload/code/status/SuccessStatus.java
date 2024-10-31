@@ -21,14 +21,14 @@ public enum SuccessStatus implements BaseCode {
     MEMBER_JOIN(HttpStatus.OK, "MEMBER2005", "회원 가입 성공"),
     MEMBER_LOGIN(HttpStatus.OK, "MEMBER2006", "로그인 성공"),
 
-    // TODO 관련 응답
-    TODO_ADD(HttpStatus.OK, "TODO2000", "TODO 추가 성공"),
-    TODO_GET_ONE(HttpStatus.OK, "TODO2001", "TODO 단건 조회 성공"),
-    TODO_GET_ALL(HttpStatus.OK, "TODO2002", "TODO 전체 조회 성공"),
-    TODO_DELETE_ONE(HttpStatus.OK, "TODO2003", "TODO 단건 삭제 성공"),
-    TODO_DELETE_ALL(HttpStatus.OK, "TODO2004", "TODO 전체 삭제 성공"),
-    TODO_UPDATE_DATA(HttpStatus.OK, "TODO2005", "TODO 수정 성공"),
-    TODO_UPDATE_STATUS(HttpStatus.OK, "TODO2006", "TODO 상태 변경 성공")
+    // MOVIE 관련 응답
+    MOVIE_ADD(HttpStatus.OK, "MOVIE2000", "MOVIE 추가 성공"),
+    MOVIE_GET_ONE(HttpStatus.OK, "MOVIE2001", "MOVIE 단건 조회 성공"),
+    MOVIE_GET_ALL(HttpStatus.OK, "MOVIE2002", "MOVIE 전체 조회 성공"),
+    MOVIE_DELETE_ONE(HttpStatus.OK, "MOVIE2003", "MOVIE 단건 삭제 성공"),
+    MOVIE_DELETE_ALL(HttpStatus.OK, "MOVIE2004", "MOVIE 전체 삭제 성공"),
+    MOVIE_UPDATE_DATA(HttpStatus.OK, "MOVIE2005", "MOVIE 수정 성공"),
+    MOVIE_UPDATE_STATUS(HttpStatus.OK, "MOVIE2006", "MOVIE 상태 변경 성공")
     ;
 
     private final HttpStatus httpStatus;

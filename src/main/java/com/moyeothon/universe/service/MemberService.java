@@ -21,12 +21,12 @@ public class MemberService {
   public Member signUp(MemberRequestDto.SignUp signUpDto) {
     memberRepository.findByUsername(signUpDto.getUsername()).ifPresent(
         member -> {
-          throw new MemberHandler(ErrorStatus.MEMBER_ALREADY_EXIST);
+          throw new MemberHandler(ErrorStatus.MEMBER_USERNAME_ALREADY_EXIST);
         }
     );
     memberRepository.findByEmail(signUpDto.getEmail()).ifPresent(
         member -> {
-          throw new MemberHandler(ErrorStatus.MEMBER_ALREADY_EXIST);
+          throw new MemberHandler(ErrorStatus.MEMBER_EMAIL_ALREADY_EXIST);
         }
     );
 
