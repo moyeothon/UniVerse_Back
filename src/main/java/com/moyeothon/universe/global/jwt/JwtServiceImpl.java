@@ -5,7 +5,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.moyeothon.universe.apiPayload.ApiResponse;
 import com.moyeothon.universe.apiPayload.code.status.SuccessStatus;
-import com.moyeothon.universe.domain.dto.MemberResponseDTO;
+import com.moyeothon.universe.domain.dto.MemberResponseDto.LoginResultDto;
 import com.moyeothon.universe.repository.MemberRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -92,7 +92,7 @@ public class JwtServiceImpl implements JwtService {
     String result = objectMapper.writeValueAsString(
         ApiResponse.of(
             SuccessStatus.MEMBER_LOGIN,
-            MemberResponseDTO.LoginResultDTO.builder().accessToken(accessToken)
+            LoginResultDto.builder().accessToken(accessToken)
                 .refreshToken(refreshToken).build()
         )
     );

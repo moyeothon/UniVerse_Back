@@ -14,9 +14,9 @@ public class MemberService {
   private final MemberRepository memberRepository;
   private final PasswordEncoder passwordEncoder;
 
-  public void signUp(MemberRequestDto.SignUp signUpDto) {
+  public Member signUp(MemberRequestDto.SignUp signUpDto) {
     signUpDto.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
-    memberRepository.save(signUpDto.toEntity());
+    return memberRepository.save(signUpDto.toEntity());
   }
 
 }

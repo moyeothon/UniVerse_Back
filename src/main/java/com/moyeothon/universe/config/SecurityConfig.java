@@ -36,9 +36,12 @@ public class SecurityConfig {
   private final MemberRepository memberRepository;
   private final JwtService jwtService;
 
+  private static final String SIGNUP_URL = "/api/members";
+  private static final String LOGIN_URL = "/api/members/login";
+
   private static final String[] AUTH_WHITELIST = {
-      "/api/members",
-      "/api/members/login"
+      SIGNUP_URL,
+      LOGIN_URL
   };
 
   @Bean
