@@ -23,7 +23,8 @@ public enum ErrorStatus implements BaseErrorCode {
     MEMBER_EMAIL_ALREADY_EXIST(HttpStatus.CONFLICT, "MEMBER4003", "이미 사용중인 이메일입니다."),
     MEMBER_PASSWORD_NOT_MATCHED(HttpStatus.NOT_ACCEPTABLE, "MEMBER4002", "비밀번호가 옳지 않습니다."),
 
-    RECORD_ALREADY_EXISTS(HttpStatus.CONFLICT, "RECORD4001", "이미 존재하는 기록입니다.")
+    RECORD_ALREADY_EXISTS(HttpStatus.CONFLICT, "RECORD4001", "이미 존재하는 기록입니다."),
+    RECORD_NOT_FOUND(HttpStatus.NOT_FOUND, "RECORD4001", "존재하지 않는 기록입니다.")
     ;
 
     private final HttpStatus httpStatus;
