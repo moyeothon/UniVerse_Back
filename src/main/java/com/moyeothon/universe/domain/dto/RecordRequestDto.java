@@ -1,12 +1,14 @@
 package com.moyeothon.universe.domain.dto;
 
 import java.util.Date;
+import java.util.List;
 import lombok.Data;
 
 public class RecordRequestDto {
 
   @Data
-  public class SaveRecord {
+  public static class SaveRecord {
+
     private Long movieId; //영화 id
 
     private String title; //제목
@@ -32,5 +34,7 @@ public class RecordRequestDto {
     private boolean isRecommend; //추천 여부
 
     private boolean isPublic; //공개 여부
+
+    private List<String> imageUrls; //이미지 url
   }
 }
