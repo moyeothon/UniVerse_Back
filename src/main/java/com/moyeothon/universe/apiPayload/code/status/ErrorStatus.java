@@ -24,7 +24,13 @@ public enum ErrorStatus implements BaseErrorCode {
     MEMBER_PASSWORD_NOT_MATCHED(HttpStatus.NOT_ACCEPTABLE, "MEMBER4002", "비밀번호가 옳지 않습니다."),
 
     RECORD_ALREADY_EXISTS(HttpStatus.CONFLICT, "RECORD4001", "이미 존재하는 기록입니다."),
-    RECORD_NOT_FOUND(HttpStatus.NOT_FOUND, "RECORD4001", "존재하지 않는 기록입니다.")
+    RECORD_NOT_FOUND(HttpStatus.NOT_FOUND, "RECORD4001", "존재하지 않는 기록입니다."),
+
+    FILE_DUPLICATE(HttpStatus.CONFLICT, "FILE4001", "이미 존재하는 파일입니다."),
+    FILE_NOT_FOUND(HttpStatus.NOT_FOUND, "FILE4002", "존재하지 않는 파일입니다."),
+    FILE_FAIL_DELETE(HttpStatus.INTERNAL_SERVER_ERROR, "FILE4003", "파일 삭제에 실패하였습니다."),
+    FILE_FAIL_UPLOAD(HttpStatus.INTERNAL_SERVER_ERROR, "FILE4004", "파일 업로드에 실패하였습니다."),
+    FILE_NOT_SUPPORTED_EXTENSION(HttpStatus.BAD_REQUEST, "FILE4005", "지원하지 않는 확장자입니다.")
     ;
 
     private final HttpStatus httpStatus;

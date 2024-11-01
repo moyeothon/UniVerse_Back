@@ -25,15 +25,13 @@ public enum SuccessStatus implements BaseCode {
     MOVIE_ADD(HttpStatus.OK, "MOVIE2000", "MOVIE 추가 성공"),
     MOVIE_GET_ONE(HttpStatus.OK, "MOVIE2001", "MOVIE 단건 조회 성공"),
     MOVIE_GET_ALL(HttpStatus.OK, "MOVIE2002", "MOVIE 전체 조회 성공"),
-    MOVIE_DELETE_ONE(HttpStatus.OK, "MOVIE2003", "MOVIE 단건 삭제 성공"),
-    MOVIE_DELETE_ALL(HttpStatus.OK, "MOVIE2004", "MOVIE 전체 삭제 성공"),
-    MOVIE_UPDATE_DATA(HttpStatus.OK, "MOVIE2005", "MOVIE 수정 성공"),
-    MOVIE_UPDATE_STATUS(HttpStatus.OK, "MOVIE2006", "MOVIE 상태 변경 성공"),
+    MOVIE_GET_RECORD(HttpStatus.OK, "MOVIE2003", "MOVIE RECORD 요약 조회 성공"),
 
     // MOVIE 관련 응답
     RECORD_ADD(HttpStatus.OK, "RECORD2000", "RECORD 추가 성공"),
     RECORD_GET(HttpStatus.OK, "RECORD2001", "RECORD 조회 성공"),
-    RECORD_GET_MY(HttpStatus.OK, "RECORD2002", "나의 RECORD 조회 성공")
+    RECORD_GET_MY(HttpStatus.OK, "RECORD2002", "나의 RECORD 조회 성공"),
+    RECORD_IMAGE_ADD(HttpStatus.OK, "RECORD2003", "RECORD 이미지 추가 성공")
     ;
 
     private final HttpStatus httpStatus;
