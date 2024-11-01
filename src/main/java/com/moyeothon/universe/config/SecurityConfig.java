@@ -42,7 +42,8 @@ public class SecurityConfig {
 
   private static final String[] AUTH_WHITELIST = {
       SIGNUP_URL,
-      LOGIN_URL
+      LOGIN_URL,
+      "/api/movies"
   };
 
   @Bean

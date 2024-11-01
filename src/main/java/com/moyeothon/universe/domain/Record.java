@@ -2,13 +2,16 @@ package com.moyeothon.universe.domain;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.Date;
+import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -48,6 +51,9 @@ public class Record {
   private boolean isRecommend; //추천 여부
 
   private boolean isPublic; //공개 여부
+
+  @ElementCollection(fetch = FetchType.LAZY)
+  private List<String> imageUrls; //이미지 url
 
   @OneToOne
   private Member owner; //작성자
