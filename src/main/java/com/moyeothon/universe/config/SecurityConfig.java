@@ -15,7 +15,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.CorsConfigurer;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HttpBasicConfigurer;
@@ -56,6 +55,7 @@ public class SecurityConfig {
         .sessionManagement(
             configurer -> configurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests((authorize) -> authorize
+            .requestMatchers("/swagger-ui", "/swagger-ui/*", "/v3/api-docs", "/v3/api-docs/*").permitAll()
             .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
             .requestMatchers(AUTH_WHITELIST).permitAll()
             .anyRequest().authenticated()
