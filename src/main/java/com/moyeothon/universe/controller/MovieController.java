@@ -7,6 +7,7 @@ import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,7 @@ public class MovieController {
   }
 
   @GetMapping("/{id}")
-  public ApiResponse<?> getMovie(@PathParam("id") Long id) {
+  public ApiResponse<?> getMovie(@PathVariable("id") Long id) {
     return ApiResponse.of(SuccessStatus.MOVIE_GET_ALL, movieService.getMovie(id));
   }
 }
