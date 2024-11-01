@@ -29,11 +29,11 @@ public class PostController {
     }
 
     //작성자에 따른 게시글 조회
-    /*@GetMapping("/user/{userId}")
-    public ResponseEntity<PostListResDto>myPostFindAll(@PathVariable("userId") Long userId){
-        PostListResDto postListResDto = postService.postFindUser(userId);
+    @GetMapping("/member/{memberId}")
+    public ResponseEntity<PostListResDto>myPostFindAll(@PathVariable("memberId") Long memberId){
+        PostListResDto postListResDto = postService.postFindMember(memberId);
         return new ResponseEntity<>(postListResDto, HttpStatus.OK);
-    }*/
+    }
 
     // 모든 게시글 조회
     @GetMapping
@@ -66,15 +66,15 @@ public class PostController {
 
     // 구인글 참여
     @PostMapping("/{postId}/join")
-    public ResponseEntity<String> joinPost(@PathVariable Long postId, @RequestParam Long userId) {
-        postService.joinPost(postId, userId);
+    public ResponseEntity<String> joinPost(@PathVariable Long postId, @RequestParam Long memberId) {
+        postService.joinPost(postId, memberId);
         return ResponseEntity.ok("참여가 성공적으로 완료되었습니다.");
     }
 
     // 구인글 참여 취소
-    @DeleteMapping("/{postId}/join/{userId}")
-    public ResponseEntity<String> cancelJoinPost(@PathVariable Long postId, @PathVariable Long userId) {
-        postService.cancelJoinPost(postId, userId);
+    @DeleteMapping("/{postId}/join/{memberId}")
+    public ResponseEntity<String> cancelJoinPost(@PathVariable Long postId, @PathVariable Long memberId) {
+        postService.cancelJoinPost(postId, memberId);
         return ResponseEntity.ok("참여가 성공적으로 취소되었습니다.");
     }
 

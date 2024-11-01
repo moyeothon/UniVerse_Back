@@ -11,13 +11,13 @@ public class PostParticipant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", nullable = false)
     private Post post;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    //private User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
 
     private LocalDateTime joinedAt;
 
@@ -26,9 +26,9 @@ public class PostParticipant {
     }
 
 
-    public PostParticipant(Post post, User user) {
+    public PostParticipant(Post post, Member member) {
         this.post = post;
-        this.user = user;
+        this.member = member;
         this.joinedAt = LocalDateTime.now();
     }
 
@@ -41,8 +41,8 @@ public class PostParticipant {
         return post;
     }
 
-    public User getUser() {
-        return user;
+    public Member getMember() {
+        return member;
     }
 
     public LocalDateTime getJoinedAt() {

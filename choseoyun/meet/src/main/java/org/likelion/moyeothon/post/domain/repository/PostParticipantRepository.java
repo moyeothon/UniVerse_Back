@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface postParticipantRepository extends JpaRepository<PostParticipant, Long> {
-    Optional<PostParticipant> findByPostIdAndUserId(Long postId, Long userId);
+public interface PostParticipantRepository extends JpaRepository<PostParticipant, Long> {
+    Optional<PostParticipant> findByPostIdAndMemberId(Long postId, Long memberId);
     void deleteByPostId(Long postId);
 }

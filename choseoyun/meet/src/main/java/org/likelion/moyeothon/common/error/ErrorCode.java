@@ -13,7 +13,7 @@ public enum ErrorCode {
      * 404 NOT FOUND: 서버가 요청받은 자원을 찾을 수 없을 때 나타나는 오류
      */
     POSTS_NOT_FOUND_EXCEPTION(HttpStatus.NOT_FOUND, "해당 게시글이 없습니다. postId = ", "NOT_FOUND_404"),
-    USER_NOT_FOUND_EXCEPTION(HttpStatus.NOT_FOUND, "해당 사용자가 없습니다. userId = ", "USER_NOT_FOUND_404"),
+    MEMBER_NOT_FOUND_EXCEPTION(HttpStatus.NOT_FOUND, "해당 사용자가 없습니다. memberId = ", "MEMBER_NOT_FOUND_404"),
 
     /**
      * 409 CONFLICT: 요청이 현재 서버 상태와 충돌하는 경우

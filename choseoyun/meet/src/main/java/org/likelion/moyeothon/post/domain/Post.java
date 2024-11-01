@@ -20,22 +20,31 @@ public class Post {
 
     private String title;
     private String contents;
+    private String theaterName;
+    private String location;
+    private String openChatLink;
 
     //작성자
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @Builder
-    private Post(String title, String contents , User user){
+    private Post(String title, String contents , String theaterName, String location, String openChatLink, Member member){
         this.title = title;
         this.contents = contents;
-        this.user = user;
+        this.theaterName = theaterName;
+        this.location = location;
+        this.openChatLink = openChatLink;
+        this.member = member;
     }
 
     public void update(PostUpdateReqDto postUpdateReqDto){
         this.title = postUpdateReqDto.title();
         this.contents = postUpdateReqDto.contents();
+        this.theaterName = postUpdateReqDto.theaterName();
+        this.location = postUpdateReqDto.location();
+        this.openChatLink = postUpdateReqDto.openChatLink();
     }
 
 
