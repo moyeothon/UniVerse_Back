@@ -33,6 +33,6 @@ public class MovieController {
   @GetMapping("/{id}/records")
   public ApiResponse<?> getMovieRecordsSummary(@PathVariable("id") Long id) {
     List<String> movieRecordsSummary = movieService.getMovieRecordsSummary(id);
-    return ApiResponse.of(SuccessStatus.MOVIE_GET_ALL, movieRecordsSummary);
+    return ApiResponse.of(SuccessStatus.MOVIE_GET_RECORD, movieRecordsSummary);
   }
 }
