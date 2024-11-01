@@ -8,7 +8,10 @@ import com.moyeothon.universe.domain.dto.RecordRequestDto;
 import com.moyeothon.universe.repository.MemberRepository;
 import com.moyeothon.universe.repository.RecordRepository;
 import com.moyeothon.universe.util.security.SecurityUtil;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,5 +31,18 @@ public class RecordService {
 
     saveRecord.setOwnerId(ownerId);
     return recordRepository.save(saveRecord);
+  }
+
+  public Page<Record> getMyRecordList(Pageable pageable) {
+    Long ownerId = memberRepository.findByUsername(SecurityUtil.getLoginUsername())
+        .orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND))
+        .getId();
+
+    return recordRepository.findByOwnerId(ownerId, pageable);
+  }
+
+  public Record getRecord(Long id) {
+    return recordRepository.findById(id)
+        .orElseThrow(() -> new RecordHandler(ErrorStatus.RECORD_NOT_FOUND));
   }
 }

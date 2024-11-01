@@ -2,6 +2,7 @@ package com.moyeothon.universe.domain;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+import com.moyeothon.universe.domain.common.BaseEntity;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -24,7 +25,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @Builder
-public class Record {
+public class Record extends BaseEntity {
 
   @Id
   @GeneratedValue(strategy = IDENTITY)

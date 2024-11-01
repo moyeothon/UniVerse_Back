@@ -11,8 +11,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RecordRepository extends JpaRepository<Record, Long> {
 
-  public Page<Record> findAllByMovieId(Long movieId, Pageable pageable);
-  public Page<Record> findAllByOwnerId(Long userId, Pageable pageable);
+  public Optional<Record> findById(Long id);
+  public Page<Record> findByMovieId(Long movieId, Pageable pageable);
+  public Page<Record> findByOwnerId(Long userId, Pageable pageable);
   public Optional<Record> findByOwnerIdAndMovieId(Long userId, Long movieId);
   public void deleteByOwnerIdAndMovieId(Long userId, Long movieId);
   public Record save(RecordRequestDto.SaveRecord recordDto);
