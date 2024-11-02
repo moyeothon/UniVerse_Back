@@ -3,6 +3,7 @@ package com.moyeothon.universe.controller;
 import com.moyeothon.universe.apiPayload.ApiResponse;
 import com.moyeothon.universe.apiPayload.code.status.SuccessStatus;
 import com.moyeothon.universe.domain.Movie;
+import com.moyeothon.universe.domain.dto.MovieResponseDto;
 import com.moyeothon.universe.service.MovieService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class MovieController {
   @GetMapping
   public ApiResponse<?> getMovieList(Pageable pageable,
       @RequestParam(value = "keyword", required = false) String keyword) {
-    Page<Movie> moviePage = null;
+    Page<MovieResponseDto.GetInfo> moviePage = null;
     if (keyword == null) {
       moviePage = movieService.getMovieList(pageable);
     }

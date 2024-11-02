@@ -51,7 +51,7 @@ public class Record extends BaseEntity {
 
   private String watchLocation; //시청 장소
 
-  private boolean isRecommend; //추천 여부
+  private boolean recommend; //추천 여부
 
   private boolean isPublic; //공개 여부
 
