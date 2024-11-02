@@ -23,7 +23,7 @@ public class MovieService {
   private final RecordRepository recordRepository;
 
   public Page<MovieResponseDto.GetInfo> getMovieList(Pageable pageable) {
-    // MovieRepository에서 Page<Movie> 가져오기
+
     Page<Movie> movies = movieRepository.findAll(pageable);
 
     // Movie를 MovieResponseDto.GetInfo로 매핑
@@ -35,6 +35,7 @@ public class MovieService {
 
     // PageImpl을 이용하여 Page<MovieResponseDto.GetInfo>로 변환
     return new PageImpl<>(movieDtos, pageable, movies.getTotalElements());
+
   }
 
   public Movie getMovie(Long id) {

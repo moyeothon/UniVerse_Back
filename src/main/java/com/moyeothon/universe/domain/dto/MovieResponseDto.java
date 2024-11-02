@@ -21,9 +21,9 @@ public class MovieResponseDto {
 
     private String actors; //배우
 
-    private String directors;
+    private String directors; //감독
 
-    private int recommendCount;
+    private int recommendCount; //추천수
 
     public GetInfo(Movie movie, int recommendCount) {
       this.id = movie.getId();

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     Page<Movie> findAll(Pageable pageable);
+    Page<Movie> findByTitleContaining(String title, Pageable pageable);
     Optional<Movie> findByTitle(String title);
     Optional<Movie> findBySubtitle(String subtitle);
     Optional<Movie> findByActors(String actors);

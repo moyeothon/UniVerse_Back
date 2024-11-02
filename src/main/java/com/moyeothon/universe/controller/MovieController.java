@@ -25,6 +25,7 @@ public class MovieController {
   @GetMapping
   public ApiResponse<?> getMovieList(Pageable pageable,
       @RequestParam(value = "keyword", required = false) String keyword) {
+
     Page<MovieResponseDto.GetInfo> moviePage = null;
     if (keyword == null) {
       moviePage = movieService.getMovieList(pageable);
