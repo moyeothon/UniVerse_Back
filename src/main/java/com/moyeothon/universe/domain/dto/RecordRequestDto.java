@@ -29,6 +29,8 @@ public class RecordRequestDto {
 
     private Date watchDate; //시청일
 
+    private String watchLocation; //시청 장소
+
     private Long ownerId; //작성자 id
 
     private boolean isRecommend; //추천 여부

@@ -36,4 +36,11 @@ public class MovieService {
         .map(Record::getSummary)
         .collect(Collectors.toList());
   }
+
+  public Page<Movie> searchMovie(Pageable pageable, String keyword) {
+
+    recordRepository.findByTitleContaining(keyword, pageable);
+
+    return null;
+  }
 }

@@ -24,7 +24,6 @@ public class LoginSuccessJWTProvideHandler extends SimpleUrlAuthenticationSucces
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
-        request.setCharacterEncoding("UTF-8");
         String username = extractUsername(authentication);
         String accessToken = jwtService.createAccessToken(username);
         String refreshToken = jwtService.createRefreshToken();
