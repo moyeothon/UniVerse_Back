@@ -16,4 +16,6 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     Optional<Movie> findBySubtitle(String subtitle);
     Optional<Movie> findByActors(String actors);
     Optional<Movie> findByDirectors(String directors);
+
+    Page<Movie> findByTitleContaining(String keyword, Pageable pageable);
 }

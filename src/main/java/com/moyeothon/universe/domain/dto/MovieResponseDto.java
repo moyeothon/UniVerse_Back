@@ -1,5 +1,6 @@
 package com.moyeothon.universe.domain.dto;
 
+import com.moyeothon.universe.domain.Movie;
 import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Data;
@@ -7,9 +8,7 @@ import lombok.Data;
 public class MovieResponseDto {
 
   @Data
-  @Builder
-  public static class GetInfoDto {
-
+  public static class GetInfo {
     private Long id; //primary Key
 
     private String title; //제목
@@ -24,6 +23,17 @@ public class MovieResponseDto {
 
     private String directors; //감독
 
-    private int recommendCount; //추천 수
+    private int recommendCount; //추천수
+
+    public GetInfo(Movie movie, int recommendCount) {
+      this.id = movie.getId();
+      this.title = movie.getTitle();
+      this.posterUrl = movie.getPosterUrl();
+      this.subtitle = movie.getSubtitle();
+      this.releaseDate = movie.getReleaseDate();
+      this.actors = movie.getActors();
+      this.directors = movie.getDirectors();
+      this.recommendCount = recommendCount;
+    }
   }
 }

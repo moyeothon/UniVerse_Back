@@ -33,7 +33,7 @@ public class RecordRequestDto {
 
     private Long ownerId; //작성자 id
 
-    private boolean isRecommend; //추천 여부
+    private boolean recommend; //추천 여부
 
     private boolean isPublic; //공개 여부
 

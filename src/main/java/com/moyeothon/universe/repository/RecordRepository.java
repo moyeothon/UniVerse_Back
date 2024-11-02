@@ -20,6 +20,5 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
 
   public Page<Record> findByTitleContaining(String title, Pageable pageable);
 
-  public int countByMovieIdAndAndRecommend(Long movieId, boolean recommend);
-
+  public int countByMovieIdAndRecommend(Long movieId, boolean recommend);
 }
