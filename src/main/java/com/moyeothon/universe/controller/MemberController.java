@@ -41,8 +41,10 @@ public class MemberController {
     return ApiResponse.of(SuccessStatus.MEMBER_DELETE, "SignOut Success");
   }
 
-  @GetMapping("/test")
-  public ResponseEntity<String> test() {
-    return new ResponseEntity<>("test", HttpStatus.OK);
+  @GetMapping
+  public ApiResponse<?> myData() {
+    Member myData = memberService.findMyData();
+
+    return ApiResponse.of(SuccessStatus.MEMBER_FOUND, myData);
   }
 }

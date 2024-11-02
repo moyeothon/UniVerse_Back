@@ -18,4 +18,6 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
   public void deleteByOwnerIdAndMovieId(Long userId, Long movieId);
   public Record save(RecordRequestDto.SaveRecord recordDto);
 
+  public Page<Record> findByTitleContaining(String title, Pageable pageable);
+
 }

@@ -39,4 +39,11 @@ public class MemberService {
         .orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
     member.setStatus(MemberStatus.DELETED);
   }
+
+  public Member findMyData(){
+    Member member = memberRepository.findByUsername(SecurityUtil.getLoginUsername())
+      .orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
+
+    return member;
+  }
 }
