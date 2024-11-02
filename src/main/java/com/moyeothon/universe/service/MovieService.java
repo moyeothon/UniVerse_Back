@@ -4,6 +4,7 @@ import com.moyeothon.universe.apiPayload.code.status.ErrorStatus;
 import com.moyeothon.universe.apiPayload.exception.handler.MemberHandler;
 import com.moyeothon.universe.domain.Movie;
 import com.moyeothon.universe.domain.Record;
+import com.moyeothon.universe.domain.dto.MovieResponseDto;
 import com.moyeothon.universe.repository.MovieRepository;
 import com.moyeothon.universe.repository.RecordRepository;
 import java.util.List;
@@ -20,8 +21,18 @@ public class MovieService {
   private final MovieRepository movieRepository;
   private final RecordRepository recordRepository;
 
-  public Page<Movie> getMovieList(Pageable pageable) {
-    return movieRepository.findAll(pageable);
+  public Page<MovieResponseDto.GetInfoDto> getMovieList(Pageable pageable) {
+    Page<Movie> all = movieRepository.findAll(pageable);
+    return all.map(movie -> MovieResponseDto.GetInfoDto.builder()
+        .id(movie.getId())
+        .title(movie.getTitle())
+        .directors(movie.getDirectors())
+        .actors(movie.getActors())
+        .posterUrl(movie.getPosterUrl())
+        .subtitle(movie.getSubtitle())
+        .releaseDate(movie.getReleaseDate())
+        .recommendCount(recordRepository.countByMovieIdAndAndRecommend(movie.getId(), true))
+        .build());
   }
 
   public Movie getMovie(Long id) {
@@ -37,10 +48,19 @@ public class MovieService {
         .collect(Collectors.toList());
   }
 
-  public Page<Movie> searchMovie(Pageable pageable, String keyword) {
+  public Page<MovieResponseDto.GetInfoDto> searchMovie(Pageable pageable, String keyword) {
 
-    recordRepository.findByTitleContaining(keyword, pageable);
+    Page<Movie> all = movieRepository.findByTitleContaining(keyword, pageable);
 
-    return null;
+    return all.map(movie -> MovieResponseDto.GetInfoDto.builder()
+        .id(movie.getId())
+        .title(movie.getTitle())
+        .directors(movie.getDirectors())
+        .actors(movie.getActors())
+        .posterUrl(movie.getPosterUrl())
+        .subtitle(movie.getSubtitle())
+        .releaseDate(movie.getReleaseDate())
+        .recommendCount(recordRepository.countByMovieIdAndAndRecommend(movie.getId(), true))
+        .build());
   }
 }
